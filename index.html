@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reva Mayangsari | Tentang Saya</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    html { scroll-behavior: smooth; }
+    body { overflow-x: hidden; }
+
+    /* Section animation */
+    section {
+      min-height: 100vh; display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+    section.visible { opacity: 1; transform: translateY(0); }
+
+    /* Typing */
+    .typing-cursor::after {
+      content: '|'; animation: blink 0.8s infinite;
+      color: #ec4899; margin-left: 2px;
+    }
+    @keyframes blink { 0%, 50%, 100% { opacity: 1; } 25%, 75% { opacity: 0; } }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #ec4899, #f472b6, #fb7185);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 700;
+    }
+
+    /* Background organisasi */
+    #organization {
+      background-image: url('https://png.pngtree.com/png-clipart/20231001/original/pngtree-butterfly-outline-seamless-pattern-png-image_13147432.png');
+      background-color: #ffe4f2;
+      background-blend-mode: lighten;
+      background-size: 300px;
+    }
+
+    /* Tombol navigasi foto organisasi */
+    .nav-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background-color: #ec4899; color: white;
+      border-radius: 9999px; padding: 0.5rem 0.8rem;
+      font-size: 1.3rem; cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .nav-btn:hover { background-color: #db2777; }
+    .fade-change { transition: opacity 0.6s ease; }
+
+    /* Hover efek perjalanan hidup */
+    #journey img {
+      transition: all 0.4s ease;
+      filter: brightness(0.95);
+    }
+    #journey img:hover {
+      transform: scale(1.07);
+      filter: brightness(1.1);
+      box-shadow: 0 8px 25px rgba(236, 72, 153, 0.3);
+    }
+
+    /* 🔹 RESPONSIVE NAVBAR UNTUK HP */
+    @media (max-width: 768px) {
+      nav .menu {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #f9a8d4;
+        padding: 10px 0;
+      }
+      nav .menu.show {
+        display: flex;
+      }
+      nav .menu a {
+        display: block;
+        padding: 8px 0;
+        margin: 0;
+        text-align: center;
+      }
+      nav button#menu-toggle {
+        display: block;
+      }
+    }
+  </style>
+</head>
+
+<body class="bg-pink-50 text-pink-900 font-sans">
+
+  <!-- Intro -->
+  <div id="intro">
+    <h1>Reva Mayangsari — Personal Portfolio💕</h1>
+  </div>
+
+  <!-- Navbar -->
+  <nav class="fixed top-0 left-0 w-full bg-pink-200 shadow-lg flex flex-wrap justify-between items-center px-6 md:px-10 py-4 z-50 font-semibold">
+    <span class="text-pink-700 text-lg md:text-xl font-bold">Reva Mayangsari 🌸</span>
+    <button id="menu-toggle" class="block md:hidden text-pink-700 text-2xl font-bold">☰</button>
+    <div class="menu space-x-6 md:space-x-8 md:flex">
+      <a href="#home" class="hover:text-pink-600 transition">Home</a>
+      <a href="#about" class="hover:text-pink-600 transition">About Me</a>
+      <a href="#journey" class="hover:text-pink-600 transition">Perjalanan Hidup</a>
+      <a href="#skills" class="hover:text-pink-600 transition">Skill</a>
+      <a href="#organization" class="hover:text-pink-600 transition">Organisasi</a>
+    </div>
+  </nav>
+
+  <!-- HOME -->
+  <section id="home" class="bg-pink-100 flex flex-col md:flex-row items-center justify-center text-center md:text-left px-6 md:px-16 gap-10 pt-24">
+    <div class="md:w-1/2 mt-10">
+      <h1 class="text-4xl md:text-6xl mb-4 gradient-text">Hallo! 💕</h1>
+      <p class="text-2xl md:text-3xl font-semibold text-pink-600">
+        Perkenalkan, saya <span class="text-pink-700 font-bold">Reva Mayangsari 🌷</span>
+      </p>
+      <p class="mt-4 text-base md:text-lg text-pink-700 max-w-md mx-auto md:mx-0">
+        Selamat datang di halaman pribadiku! Yuk, kenalan lebih dekat dengan perjalanan hidup, pengalaman, dan hal-hal yang aku sukai 💖
+      </p>
+    </div>
+    <div class="md:w-1/3">
+      <img src="images/foto-home.jpg" alt="Foto Reva Mayangsari"
+           class="rounded-full shadow-2xl border-4 border-pink-300 hover:scale-105 transition duration-500 max-w-full h-auto">
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="bg-pink-50 px-6 md:px-16 flex flex-col md:flex-row items-center justify-center text-center md:text-left gap-10">
+    <div class="md:w-1/2 mt-16 md:mt-0">
+      <h1 class="text-3xl md:text-4xl font-bold mb-4 text-pink-700">Hai, Aku Reva Mayangsari 💕</h1>
+      <p id="typing-text" class="text-base md:text-lg leading-relaxed typing-cursor"></p>
+    </div>
+    <div class="md:w-1/3">
+      <img src="images/foto-saya.jpg" alt="Foto Reva Mayangsari"
+           class="rounded-full shadow-xl hover:scale-105 transition duration-500 border-4 border-pink-300 max-w-full h-auto">
+    </div>
+  </section>
+
+  <!-- PERJALANAN HIDUP -->
+  <section id="journey" class="bg-pink-100 py-20 px-6 md:px-16">
+    <h2 class="text-3xl font-bold mb-12 text-center">🌸 Perjalanan Hidupku</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-10 place-items-center">
+      <div class="bg-pink-200 p-5 rounded-2xl shadow-md transition w-full">
+        <img src="images/foto-masa-kecil.jpg" class="rounded-xl mb-4 max-w-full h-auto">
+        <h3 class="text-xl font-semibold text-center mb-2">Masa Kecil</h3>
+        <p class="text-sm text-center text-pink-800">Aku tumbuh dengan keceriaan dan rasa ingin tahu yang besar.</p>
+      </div>
+      <div class="bg-pink-200 p-5 rounded-2xl shadow-md transition w-full">
+        <img src="images/foto-sd.jpg" class="rounded-xl mb-4 max-w-full h-auto">
+        <h3 class="text-xl font-semibold text-center mb-2">Masa SD</h3>
+        <p class="text-sm text-center text-pink-800">Mulai aktif belajar dan mengikuti berbagai lomba kecil.</p>
+      </div>
+      <div class="bg-pink-200 p-5 rounded-2xl shadow-md transition w-full">
+        <img src="images/foto-smp.jpg" class="rounded-xl mb-4 max-w-full h-auto">
+        <h3 class="text-xl font-semibold text-center mb-2">Masa SMP</h3>
+        <p class="text-sm text-center text-pink-800">Aktif berorganisasi dan mengenal banyak teman baru.</p>
+      </div>
+      <div class="bg-pink-200 p-5 rounded-2xl shadow-md transition w-full">
+        <img src="images/foto-sma.jpg" class="rounded-xl mb-4 max-w-full h-auto">
+        <h3 class="text-xl font-semibold text-center mb-2">Masa SMA</h3>
+        <p class="text-sm text-center text-pink-800">Belajar tanggung jawab dan kepemimpinan di organisasi sekolah.</p>
+      </div>
+      <div class="bg-pink-200 p-5 rounded-2xl shadow-md transition w-full">
+        <img src="images/foto-sekarang.jpg" class="rounded-xl mb-4 max-w-full h-auto">
+        <h3 class="text-xl font-semibold text-center mb-2">Sekarang</h3>
+        <p class="text-sm text-center text-pink-800">Mahasiswa Pendidikan Kimia yang terus belajar & berproses 🌷</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILL -->
+  <section id="skills" class="bg-pink-50 py-20 px-6 md:px-16 text-center">
+    <h2 class="text-3xl font-bold mb-6 text-pink-700">🍳 Skills ku</h2>
+    <p class="max-w-2xl mx-auto text-base md:text-lg mb-10">
+      Aku bisa memasak berbagai jenis makanan — dari masakan nusantara hingga dessert manis.  
+      Memasak adalah bentuk ekspresi dan kebahagiaan 💕
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+      <img src="images/skill1.jpg" class="rounded-2xl shadow-md hover:scale-105 transition max-w-full h-auto">
+      <img src="images/skill2.jpg" class="rounded-2xl shadow-md hover:scale-105 transition max-w-full h-auto">
+      <img src="images/skill3.jpg" class="rounded-2xl shadow-md hover:scale-105 transition max-w-full h-auto">
+      <img src="images/skill4.jpg" class="rounded-2xl shadow-md hover:scale-105 transition max-w-full h-auto">
+      <img src="images/skill5.png" class="rounded-2xl shadow-md hover:scale-105 transition max-w-full h-auto">
+    </div>
+  </section>
+
+  <!-- ORGANISASI -->
+  <section id="organization" class="py-20 px-6 md:px-16 text-center">
+    <h2 class="text-3xl font-bold mb-8">🦋 Pengalaman Organisasi</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 max-w-5xl mx-auto">
+
+      <!-- OSIS -->
+      <div class="bg-pink-200 bg-opacity-70 p-6 rounded-2xl shadow-lg transition relative">
+        <div class="relative">
+          <img id="osis-photo" src="images/foto-osis1.jpg" class="rounded-xl mb-4 mx-auto fade-change max-w-full h-auto">
+          <button onclick="changePhoto('osis', -1)" class="nav-btn left-0">‹</button>
+          <button onclick="changePhoto('osis', 1)" class="nav-btn right-0">›</button>
+        </div>
+        <h3 class="text-xl font-semibold mb-2 text-pink-800">OSIS</h3>
+        <p class="text-pink-900">Menjadi anggota OSIS, berperan sebagai Sekretaris dan Bendahara. Belajar disiplin, tanggung jawab, dan kerja tim.</p>
+      </div>
+
+      <!-- PRAMUKA -->
+      <div class="bg-pink-200 bg-opacity-70 p-6 rounded-2xl shadow-lg transition relative">
+        <div class="relative">
+          <img id="pramuka-photo" src="images/foto-pramuka1.jpg" class="rounded-xl mb-4 mx-auto fade-change max-w-full h-auto">
+          <button onclick="changePhoto('pramuka', -1)" class="nav-btn left-0">‹</button>
+          <button onclick="changePhoto('pramuka', 1)" class="nav-btn right-0">›</button>
+        </div>
+        <h3 class="text-xl font-semibold mb-2 text-pink-800">Pramuka</h3>
+        <p class="text-pink-900">Menjadi bagian dari Dewan Ambalan Sindang Alam dan dipercaya menjadi Bendahara. Belajar kepemimpinan dan kebersamaan 🪶</p>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-pink-200 text-center py-4 font-medium">
+    Reva Mayangsari | 2025
+  </footer>
+
+  <script>
+    // Intro hilang otomatis
+    window.addEventListener("load", () => {
+      setTimeout(() => document.getElementById("intro").classList.add("fade-out"), 2000);
+    });
+
+    // Navbar toggle HP
+    document.getElementById("menu-toggle").addEventListener("click", () => {
+      document.querySelector("nav .menu").classList.toggle("show");
+    });
+
+    // Scroll reveal
+    const sections = document.querySelectorAll('section');
+    const reveal = () => {
+      const trigger = window.innerHeight / 1.3;
+      sections.forEach(sec => {
+        if (sec.getBoundingClientRect().top < trigger) sec.classList.add('visible');
+      });
+    };
+    window.addEventListener('scroll', reveal);
+    reveal();
+
+    // Typing effect
+    const text = "Halo! Aku Reva Mayangsari, seorang mahasiswa Program Studi Pendidikan Kimia di Universitas Bengkulu dengan NPM A1F025011. Aku lahir dan tumbuh dengan semangat belajar yang besar, serta rasa ingin tahu yang tinggi terhadap dunia sekitar. Sejak kecil, aku selalu suka mencoba hal-hal baru dan menjelajahi berbagai bidang — mulai dari sains, seni, hingga organisasi. " +
+    "Bagiku, pendidikan bukan hanya tentang angka dan nilai, tetapi tentang bagaimana kita bisa memahami kehidupan dari sudut pandang yang lebih luas. Saat ini aku sedang berproses menjadi pribadi yang lebih baik, belajar untuk beradaptasi, bekerja sama dengan orang lain, dan tetap rendah hati dalam setiap langkah. " +
+    "Melalui halaman ini, aku ingin berbagi kisah tentang perjalanan hidupku, pengalaman yang membentuk diriku, serta hal-hal yang aku sukai seperti memasak, berorganisasi, dan menulis. Aku percaya bahwa setiap orang punya cerita uniknya masing-masing, dan inilah ceritaku. 🌷";
+
+    let i = 0;
+    function type() {
+      if (i < text.length) {
+        document.getElementById("typing-text").textContent += text.charAt(i);
+        i++; setTimeout(type, 12);
+      }
+    }
+    window.addEventListener("load", type);
+
+    // Gambar organisasi
+    const photos = {
+      osis: [
+        "images/foto-osis1.jpg",
+        "images/foto-osis2.jpg",
+        "images/foto-osis3.jpg",
+        "images/foto-osis4.jpg",
+        "images/foto-osis5.jpg"
+      ],
+      pramuka: [
+        "images/foto-pramuka1.jpg",
+        "images/foto-pramuka2.jpg",
+        "images/foto-pramuka3.jpg",
+        "images/foto-pramuka4.jpg",
+        "images/foto-pramuka5.jpg"
+      ]
+    };
+    let indexPhoto = { osis: 0, pramuka: 0 };
+
+    function changePhoto(type, dir = 1) {
+      const total = photos[type].length;
+      indexPhoto[type] = (indexPhoto[type] + dir + total) % total;
+      const img = document.getElementById(`${type}-photo`);
+      img.style.opacity = 0;
+      setTimeout(() => {
+        img.src = photos[type][indexPhoto[type]];
+        img.style.opacity = 1;
+      }, 300);
+    }
+
+    // Auto-slide setiap 4 detik
+    setInterval(() => changePhoto('osis', 1), 4000);
+    setInterval(() => changePhoto('pramuka', 1), 4000);
+  </script>
+</body>
+</html>
